@@ -1,0 +1,37 @@
+body {
+    text-align: center;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+.title {
+    font-size: 60px; 
+    color: #c62828;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+.subtitle {
+    font-size: 40px; 
+    color: #e53935;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+canvas {
+    border: 2px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    background: white;
+    border-radius: 8px;
+}
+.signature {
+    font-size: 20px; 
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
