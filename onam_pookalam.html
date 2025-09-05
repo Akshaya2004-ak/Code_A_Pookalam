@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pookalam Art</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+    <h1>Traditional Indian Pookalam Art</h1>
+    <div id="pookalam"></div>
+    
+    <py-config>
+        packages = ["turtle"]
+    </py-config>
+    
+    <py-script output="pookalam">
+import turtle
+from turtle import *
+import math
+
+bgcolor("white")
+tracer(0, 0)
+
+def circ(len, clr):
+    penup()
+    home()
+    goto(0, -(len+50))
+    pendown()
+    color(clr)
+    begin_fill()
+    circle(len)
+    end_fill()
+
+circ(300, "#8B4513")
+
+def tripatt(len, clr):
+    home()
+    goto(0, -50)
+    color(clr)
+    for i in range(36):
+        begin_fill()
+        forward(len / math.tan(math.pi / 3.6))
+        left(130)
+        forward(len / math.sin(math.pi / 3.6))
+        left(100)
+        forward(len / math.sin(math.pi / 3.6))
+        left(130)
+        forward(len / math.tan(math.pi / 3.6))
+        end_fill()
+        left(10)
+    left(5)
+
+tripatt(300, "#FF1493")
+tripatt(271, "#FF69B4")
+tripatt(246,  "#fcd349")
+tripatt(223, "#FFC0CB")
+
+circ(200, "#014504")
+
+def sqpatt(len, clr):
+    penup()
+    home()
+    goto(0, -50)
+    left(45)
+    pendown()
+    color(clr)
+    for i in range(18):
+        begin_fill()
+        for i in range(4):
+            forward(len * math.sqrt(2))
+            left(90)
+        end_fill()
+        penup()
+        left(20)
+        pendown()
+
+sqpatt(100, "#FFE4B5")
+sqpatt(82, "#CD5C5C")
+sqpatt(70, "#D2691E")
+
+home()
+goto(0, -50)
+pensize(10)
+color("#FF6347")
+for i in range(18):
+    forward(196)
+    backward(196)
+    left(20)
+
+circ(110, "#4A235A")
+
+def draw_center_design():
+    center_turtle = Turtle()
+    center_turtle.hideturtle()
+    center_turtle.speed(0)
+    center_turtle.penup()
+    
+    colors = ["#FFD700", "#FFDF00", "#FFEA00", "#FFF700", "#FFFF00", "#FFFFE0"]
+    
+    def draw_petal(x, y, size, angle, color):
+        center_turtle.penup()
+        center_turtle.goto(x, y)
+        center_turtle.setheading(angle)
+        center_turtle.pendown()
+        center_turtle.color(color)
+        center_turtle.begin_fill()
+        center_turtle.circle(size, 60)
+        center_turtle.left(120)
+        center_turtle.circle(size, 60)
+        center_turtle.end_fill()
+    
+    for i in range(12):
+        angle = i * 30
+        size = 35
+        color_idx = i % len(colors)
+        draw_petal(0, -50, size, angle, colors[color_idx])
+    
+    for i in range(24):
+        angle = i * 15
+        radius = 40
+        x = radius * math.cos(angle * math.pi / 180)
+        y = -50 + radius * math.sin(angle * math.pi / 180)
+        
+        center_turtle.penup()
+        center_turtle.goto(x, y)
+        center_turtle.pendown()
+        center_turtle.color("#FF4500")
+        center_turtle.begin_fill()
+        center_turtle.circle(3)
+        center_turtle.end_fill()
+
+draw_center_design()
+
+update()
+hideturtle()
+    </py-script>
+</body>
+</html>
